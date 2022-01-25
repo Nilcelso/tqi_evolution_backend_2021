@@ -1,8 +1,8 @@
 package com.tqi.analisecredito.api.mapper;
 
-import com.tqi.analisecredito.api.model.EmprestimoExpandResponse;
-import com.tqi.analisecredito.api.model.EmprestimoRequest;
-import com.tqi.analisecredito.api.model.EmprestimoResponse;
+import com.tqi.analisecredito.api.model.response.EmprestimoExpandResponse;
+import com.tqi.analisecredito.api.model.request.EmprestimoRequest;
+import com.tqi.analisecredito.api.model.response.EmprestimoResponse;
 import com.tqi.analisecredito.domain.model.Emprestimo;
 import org.mapstruct.Mapper;
 
@@ -10,7 +10,7 @@ import org.mapstruct.Mapper;
 public interface EmprestimoMapper {
     Emprestimo toEntity(EmprestimoRequest request);
 
-    default EmprestimoResponse toResponse(Emprestimo entity){
+    default EmprestimoResponse toResponse(Emprestimo entity) {
         return EmprestimoResponse.builder()
                 .id(entity.getId())
                 .qtdParcelas(entity.getQtdParcelas())
@@ -19,7 +19,7 @@ public interface EmprestimoMapper {
                 .build();
     }
 
-    default EmprestimoExpandResponse toResponseExpand(Emprestimo entity){
+    default EmprestimoExpandResponse toResponseExpand(Emprestimo entity) {
         return EmprestimoExpandResponse.builder()
                 .id(entity.getId())
                 .qtdParcelas(entity.getQtdParcelas())

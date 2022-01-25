@@ -1,7 +1,7 @@
-package com.tqi.analisecredito.api.exception.handler;
+package com.tqi.analisecredito.common.exception.handler;
 
-import com.tqi.analisecredito.api.exception.RecursoNaoEncontradoException;
-import com.tqi.analisecredito.api.exception.RegraDeNegocioException;
+import com.tqi.analisecredito.common.exception.RecursoNaoEncontradoException;
+import com.tqi.analisecredito.common.exception.RegraDeNegocioException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

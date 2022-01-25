@@ -1,4 +1,4 @@
-package com.tqi.analisecredito.api.exception;
+package com.tqi.analisecredito.common.exception;
 
 public class RecursoNaoEncontradoException extends RuntimeException {
 

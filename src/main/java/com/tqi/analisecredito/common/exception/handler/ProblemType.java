@@ -1,4 +1,4 @@
-package com.tqi.analisecredito.api.exception.handler;
+package com.tqi.analisecredito.common.exception.handler;
 
 import lombok.Getter;
 

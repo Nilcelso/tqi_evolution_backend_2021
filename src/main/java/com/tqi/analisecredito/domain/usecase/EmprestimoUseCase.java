@@ -1,11 +1,11 @@
 package com.tqi.analisecredito.domain.usecase;
 
-import com.tqi.analisecredito.api.exception.RecursoNaoEncontradoException;
-import com.tqi.analisecredito.api.exception.RegraDeNegocioException;
+import com.tqi.analisecredito.common.exception.RecursoNaoEncontradoException;
+import com.tqi.analisecredito.common.exception.RegraDeNegocioException;
 import com.tqi.analisecredito.api.mapper.EmprestimoMapper;
-import com.tqi.analisecredito.api.model.EmprestimoExpandResponse;
-import com.tqi.analisecredito.api.model.EmprestimoRequest;
-import com.tqi.analisecredito.api.model.EmprestimoResponse;
+import com.tqi.analisecredito.api.model.response.EmprestimoExpandResponse;
+import com.tqi.analisecredito.api.model.request.EmprestimoRequest;
+import com.tqi.analisecredito.api.model.response.EmprestimoResponse;
 import com.tqi.analisecredito.domain.repository.EmprestimoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,7 +29,7 @@ public class EmprestimoUseCase {
     public EmprestimoResponse salvar(EmprestimoRequest request) throws RegraDeNegocioException {
         validaEmprestimo(request);
 
-        if(clienteUseCase.buscar().stream().filter(response -> request.getCliente().getId() == response.getId()).findFirst().isEmpty())
+        if (clienteUseCase.buscar().stream().filter(response -> request.getCliente().getId() == response.getId()).findFirst().isEmpty())
             throw new RecursoNaoEncontradoException("Cliente inexistente");
 
         return mapper.toResponse(repository.save(mapper.toEntity(request)));
@@ -48,12 +48,12 @@ public class EmprestimoUseCase {
                 () -> new RecursoNaoEncontradoException("Emprestimo com id", idEmprestimo.toString())));
     }
 
-    private void validaEmprestimo(EmprestimoRequest request) throws RegraDeNegocioException{
-        if(request.getDataPrimeiraParcela().isAfter(LocalDate.now().plusDays(90))){
+    private void validaEmprestimo(EmprestimoRequest request) throws RegraDeNegocioException {
+        if (request.getDataPrimeiraParcela().isAfter(LocalDate.now().plusDays(90))) {
             throw new RegraDeNegocioException("Data da primeira parcela não pode ser maior que 90 dias a partir da data atual.");
         }
 
-        if(request.getQtdParcelas() > 60){
+        if (request.getQtdParcelas() > 60) {
             throw new RegraDeNegocioException("Quantidade de parcelas não pode ser maior que 60.");
         }
     }

@@ -1,8 +1,8 @@
 package com.tqi.analisecredito.domain.usecase;
 
 import com.tqi.analisecredito.api.mapper.ClienteMapper;
-import com.tqi.analisecredito.api.model.ClienteRequest;
-import com.tqi.analisecredito.api.model.ClienteResponse;
+import com.tqi.analisecredito.api.model.request.ClienteRequest;
+import com.tqi.analisecredito.api.model.response.ClienteResponse;
 import com.tqi.analisecredito.domain.repository.ClienteRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,9 @@
 package com.tqi.analisecredito.api.controller;
 
-import com.tqi.analisecredito.api.exception.RegraDeNegocioException;
-import com.tqi.analisecredito.api.model.EmprestimoExpandResponse;
-import com.tqi.analisecredito.api.model.EmprestimoRequest;
-import com.tqi.analisecredito.api.model.EmprestimoResponse;
+import com.tqi.analisecredito.common.exception.RegraDeNegocioException;
+import com.tqi.analisecredito.api.model.response.EmprestimoExpandResponse;
+import com.tqi.analisecredito.api.model.request.EmprestimoRequest;
+import com.tqi.analisecredito.api.model.response.EmprestimoResponse;
 import com.tqi.analisecredito.domain.usecase.EmprestimoUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,7 +27,7 @@ public class SolicitacaoEmprestimoController {
     }
 
     @GetMapping("/cliente_id={cliente_id}")
-    public ResponseEntity<List<EmprestimoResponse>> listarPorCliente(@PathVariable("cliente_id") final Long idCliente){
+    public ResponseEntity<List<EmprestimoResponse>> listarPorCliente(@PathVariable("cliente_id") final Long idCliente) {
 
         var listaEmprestimos = emprestimoUseCase.buscarEmprestimosPorCliente(idCliente);
 
@@ -35,7 +35,7 @@ public class SolicitacaoEmprestimoController {
     }
 
     @GetMapping("/{id}/expand")
-    public ResponseEntity<EmprestimoExpandResponse> listarPorClienteExpand(@PathVariable("id") final Long idEmprestimo){
+    public ResponseEntity<EmprestimoExpandResponse> listarPorClienteExpand(@PathVariable("id") final Long idEmprestimo) {
 
         return ResponseEntity.ok(emprestimoUseCase.buscarEmprestimosExpandPorCliente(idEmprestimo));
     }

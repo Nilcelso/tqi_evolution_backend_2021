@@ -5,14 +5,14 @@ spring:
       enabled: true
       path: /h2
 
-# DATASOURCE
+  # DATASOURCE
   datasource:
     url: jdbc:h2:mem:mydb
     driverClassName: org.h2.Driver
     username: sa
     password:
 
-# JPA
+  # JPA
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
@@ -22,3 +22,10 @@ spring:
 server:
   servlet:
     context-path=: /analisecredito
+
+# Application
+# App Properties
+tqi:
+  app:
+    jwtSecret: tqiSecretKey
+    jwtExpirationMs: 86400000

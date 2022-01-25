@@ -1,4 +1,4 @@
-package com.tqi.analisecredito.api.model;
+package com.tqi.analisecredito.api.model.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.tqi.analisecredito.domain.model.Cliente;
